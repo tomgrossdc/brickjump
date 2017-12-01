@@ -1,0 +1,10 @@
+Notes on cropping runningman.bmp
+Start with a google search for running man sprite bmp
+downloaded 29200.png
+first crop out the smaller section want:
+
+  uses size of box and offset
+convert 29200.png -crop 100x200+50+315 crop3.bmp
+
+  chop into sub squares. no further offset used
+convert crop3.bmp +gravity -crop 33x50 runningman_%d.bmp
