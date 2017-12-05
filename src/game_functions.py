@@ -64,11 +64,13 @@ def movepickedbrick(pickbrick):
 	return
 			
 def pickupbrick(bj_settings,screen,bricks,pickup):
+
+	if bj_settings.numpickedbricks==bj_settings.maxnumpickedbricks: return False
 	mousepos=pygame.mouse.get_pos()
 	pickup.rect.x = mousepos[0]
 	pickup.rect.y = mousepos[1]
 	pickedbricks=pygame.sprite.spritecollide(pickup,bricks, False)
-	print ("Mouse at:",mousepos,pickup.rect,len(pickedbricks))	
+	#print ("Mouse at:",mousepos,pickup.rect,len(pickedbricks))	
 	if len(pickedbricks)==0 : 
 		# No Selection
 		#pickbrick=False
@@ -91,6 +93,8 @@ def pickupbrick(bj_settings,screen,bricks,pickup):
 			pickbrick.rect.centery=pickup.rect.y
 			bj_settings.pickbrick=pickbrick
 			pickbrick.pickedbrick=True
+			bj_settings.numpickedbricks+=1
+			print ("Number of Picked Bricks=",bj_settings.numpickedbricks)
 			return True
 		else:
 			return False

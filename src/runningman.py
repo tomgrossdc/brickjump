@@ -24,7 +24,7 @@ class RunningMan(Sprite):
 		self.screen = screen
 		self.bj_settings=bj_settings
 		#self.image=pygame.image.load('images/alien75.bmp')
-		self.image=pygame.image.load('images/man50.bmp')
+		self.image=pygame.image.load('images/runningman/runningman_0.bmp')
 		self.rect=self.image.get_rect()
 		self.screen_rect=screen.get_rect()
 
@@ -47,6 +47,7 @@ class RunningMan(Sprite):
 		self.moveman(bj_settings)
 
 	def changestate(self,bj_settings,bricks):
+		# Check collisions to decide transition to a new state
 		# Reset the state to Climbing, Running or Falling
 		collisions = pygame.sprite.spritecollide(self,bricks,False)
 		#Front=False
@@ -102,16 +103,17 @@ class RunningMan(Sprite):
 			if self.state=="Falling":
 				self.state="Running"
 			i=1
-		elif lencol==3:	
-			# corner. move up or forward, depending on min dx<0 for the brick which has highest y (min up)
+		elif lencol==3 or lencol==4 :	
+			#print("3or4 ",d3x,d1y,self.state," lencol=",lencol)
+# corner. move up or forward, depending on min dx<0 for the brick which has highest y (min up)
 			#sign of d3x indicates: box in front - (climb) box behind + (run away)
 			if d3x<0 :
 				self.state="Climbing"
 			else:
-				self.state="Running"
+				self.state="Climbing" # was Running
 		else:
 			# touching four at once? Already bad
-			print("Four touchs",self.rect.x,self.rect.y,self.state," lencol=",lencol)
+			print("Five touchs",self.rect.x,self.rect.y,self.state," lencol=",lencol)
 			self.state="Climbing"
 			#sys.exit()
 		
@@ -123,7 +125,7 @@ class RunningMan(Sprite):
 
 		bj_settings.timecounter+=1
 		imagenumber=(bj_settings.timecounter/4)%8
-		imagename='images/runningman/runningman50_%d.bmp' % (imagenumber)
+		imagename='images/runningman/runningman_%d.bmp' % (imagenumber)
 		self.image=pygame.image.load(imagename)
 		if self.state=="Climbing":
 			self.climbing_time +=1

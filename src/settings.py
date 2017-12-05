@@ -33,7 +33,8 @@ class Settings():
 		self.mousedownstill=False
 		self.timecounter=0
 		self.pickbrick=False
-		
+		self.numpickedbricks=0
+		self.maxnumpickedbricks=6
 
 
 	

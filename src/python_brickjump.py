@@ -37,13 +37,8 @@ def reset_game(bj_settings,screen,num_bricks):
 	# Set up the Group of bricks LayeredUpdates is a class that uses Group, 
 	# so it has added features, like  Nothing 
 	bricks = Group()
-	#bricks.add(brick)
-	#bricknew = Brick(bj_settings,screen)
-	#bricknew.rect.y -= bricknew.rect.height
-	#bricks.add(bricknew)
-	#num_bricks=6
-	#gf.create_column(bj_settings,screen,bricks,num_bricks)
-	
+
+	bj_settings.numpickedbricks=0
 	""" Make most recent screen visible"""
 	""" Start up the bricks with a floor, then add running man"""
 	bj_settings.column_pos = bj_settings.screen_width
@@ -85,7 +80,7 @@ def run_game():
 		screen.fill(bj_settings.bg_color)
 		ReStartOnR=gf.check_events(bj_settings, screen, bricks,pickup)
 		if runningman.rect.centerx<0: ReStartOnR=True
-		if runningman.rect.centerx>bj_settings.screen_width: ReStartOnR=True
+		if runningman.rect.centerx>(bj_settings.screen_width-2*bj_settings.brick_width): ReStartOnR=True
 		if ReStartOnR:
 			bricks=reset_game(bj_settings,screen,num_bricks)
 			runningman.rect.centerx = 2*bj_settings.brick_width
