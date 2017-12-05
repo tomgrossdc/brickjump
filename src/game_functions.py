@@ -30,6 +30,7 @@ def droppickedbrick(bj_settings, pickbrick,bricks):
 # Keep dropping (outside main time loop) and testing for intercepts. 
 # If brick is touching a brick within 1/2 width, set it down
 	#print ( "Droppickedbrick",pickbrick.rect.centery)
+	if not pickbrick : return
 	dropping=True
 	while dropping:
 		pickbrick.rect.centery+=1

@@ -32,6 +32,7 @@ class Settings():
 		self.column_heights= 1,2,3,2,1,2,1,2,2,4,1,2,3,4,8,6,5,4,3,4,5,6,1,2,4,4,5,8
 		self.mousedownstill=False
 		self.timecounter=0
+		self.pickbrick=False
 		
 
 
