@@ -64,7 +64,7 @@ def reset_game(bj_settings,screen,num_bricks):
 def run_game():
 	pygame.init()
 	screen=pygame.display.set_mode((bj_settings.screen_width,bj_settings.screen_height))
-	pygame.display.set_caption("March UpHill")
+	pygame.display.set_caption("GitHub Version DecBranch brickjump.py")
 	clock = pygame.time.Clock()
 	#Lay a brick
 	brick = Brick(bj_settings,screen)
@@ -102,7 +102,7 @@ def run_game():
 		bricks.draw(screen)
 		pygame.display.flip()
 		clock.tick(50)
-		pygame.display.set_caption("fps: " + str(clock.get_fps()))
+		pygame.display.set_caption("GitHub Version DecBranch brickjump.py fps: " + str(clock.get_fps()))
 		time.sleep(.003)
 
 
